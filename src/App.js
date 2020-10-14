@@ -1,8 +1,6 @@
 import React from 'react';
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import Features from './components/Features/Features';
-import Footer from './components/Footer/Footer';
+
+import { Calendar, Details, Features, Footer, Header, Main } from './components';
 
 import './style.css';
 
