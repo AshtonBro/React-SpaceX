@@ -1,4 +1,5 @@
 import React from 'react';
+import Rocket from '../../img/falcon-1.png';
 import './features.css';
 
 const Features = () => (
@@ -30,7 +31,7 @@ const Features = () => (
 				</thead>
 			</table>
 			<img
-					src="img/falcon-1.png"
+					src={Rocket}
 					alt="rocket"
 					className="rocket"
 					data-rellax-speed="14"
