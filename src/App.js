@@ -8,7 +8,7 @@ class App extends React.Component {
   fetchData = new FetchData();
 
   state = {
-    rocket: 'Falcon-1',
+    rocket: 'Falcon 1',
     rocketFeatures: null,
     rockets: [],
   }
@@ -25,7 +25,7 @@ class App extends React.Component {
     })
     .then((data) => data.find((item) => item.name === this.state.rocket))
     .then((rocketFeatures) => {
-      this.setState({ rocketFeatures }, () => console.log(this.state.rocket));
+      this.setState({ rocketFeatures }, () => this.state.rocket);
     });
   }
 
@@ -40,7 +40,7 @@ class App extends React.Component {
       <>
         <Header rockets={this.state.rockets} changeRocket={this.changeRocket}/>
         <Main rocket={this.state.rocket}/>
-        <Features />
+        {this.state.rocketFeatures && <Features {...this.state.rocketFeatures}/>}
         <Footer />
       </>
     )
