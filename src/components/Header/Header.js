@@ -13,7 +13,13 @@ const Header = (props) => (
             <ul className="list">
                 {props.rockets.map((navTitle, index) => (
                      <li key={`${navTitle}_${index}`} className="item">
-                     <a href="/" className="item-link">{navTitle}</a>
+                     <a href="/"
+                      onClick={(event) => {
+                          event.preventDefault();
+                          props.changeRocket(navTitle);
+                      }} 
+                      className="item-link">{navTitle}
+                      </a>
                      </li>
                 ))}
             </ul>

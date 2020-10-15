@@ -11,17 +11,17 @@ class App extends React.Component {
     rocket: 'Falcon-1',
     rocketFeatures: null,
     rockets: [],
-  };
+  }
 
   componentDidMount() {
     this.updateRocket();
-  };
+  }
 
   updateRocket() {
     this.fetchData.getRocket()
     .then((data) => {
-      this.setState({ rockets: data.map(item => item.name) })
-      return data
+      this.setState({ rockets: data.map(item => item.name) });
+      return data;
     })
     .then((data) => data.find((item) => item.name === this.state.rocket))
     .then((rocketFeatures) => {
@@ -29,10 +29,16 @@ class App extends React.Component {
     });
   }
 
+  changeRocket = (rocket) => {
+    this.setState({
+      rocket
+    }, this.updateRocket)
+  }
+
   render() {
     return(
       <>
-        <Header rockets={this.state.rockets}/>
+        <Header rockets={this.state.rockets} changeRocket={this.changeRocket}/>
         <Main rocket={this.state.rocket}/>
         <Features />
         <Footer />
