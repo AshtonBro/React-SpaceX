@@ -1,7 +1,11 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Calendar, Details, Features, Footer, Header, Main, Home } from './components';
 import FetchData from './service/FetchData';
 import './style.css';
+
+//? npm i react-router-dom -D
+//? mpm i react-rellax-wrapper --save
 
 class App extends React.Component {
 
@@ -45,13 +49,28 @@ class App extends React.Component {
 
   render() {
     return(
-      <>
+      <BrowserRouter>
         <Header rockets={this.state.rockets} changeRocket={this.changeRocket}/>
-        {this.state.company && <Home company={this.state.company}/>}
-        {/* <Main rocket={this.state.rocket}/>
-        {this.state.rocketFeatures && <Features {...this.state.rocketFeatures}/>} */}
-        {this.state.company && <Footer {...this.state.company.links}/>}
-      </>
+
+        <Route exact path='/'>
+          {this.state.company && <Home company={this.state.company}/>}
+        </Route>
+
+        <Route path='/rocket'>
+          <Main rocket={this.state.rocket}/>
+          {this.state.rocketFeatures && <Features {...this.state.rocketFeatures}/>}
+        </Route>
+
+        <Route path='/calendar'>
+          <Calendar />
+        </Route>
+
+        <Route path='/details'>
+          <Details />
+        </Route>
+
+        {this.state.company && <Footer {...this.state.company}/>}
+      </BrowserRouter>
     )
   }
 }
