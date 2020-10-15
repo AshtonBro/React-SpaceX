@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Details, Features, Footer, Header, Main } from './components';
+import { Calendar, Details, Features, Footer, Header, Main, Home } from './components';
 import FetchData from './service/FetchData';
 import './style.css';
 
@@ -47,8 +47,9 @@ class App extends React.Component {
     return(
       <>
         <Header rockets={this.state.rockets} changeRocket={this.changeRocket}/>
-        <Main rocket={this.state.rocket}/>
-        {this.state.rocketFeatures && <Features {...this.state.rocketFeatures}/>}
+        {this.state.company && <Home company={this.state.company}/>}
+        {/* <Main rocket={this.state.rocket}/>
+        {this.state.rocketFeatures && <Features {...this.state.rocketFeatures}/>} */}
         {this.state.company && <Footer {...this.state.company.links}/>}
       </>
     )
