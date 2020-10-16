@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Main from '../Main/Main.js'
 import './calendar.css';
 import FetchData from '../../service/FetchData';
+const fetchData = new FetchData();
 
 const Calendar = () => {
-
-	const fetchData = new FetchData();
 
 	const [data, setData] = useState([]);
 	
 	useEffect(() => {
 		fetchData.getLaunches()
-		.then((launches) => setData(launches))	
+		.then((launches) => setData((state) => [...launches]))	
 	}, []);
 
 	console.log('data: ', data);
