@@ -7,7 +7,7 @@ const rocketImage = {
     'Falcon 1': 'falcon-1',
     'Falcon 9': 'falcon-9',
     'Falcon Heavy': 'falcon-heavy',
-     'Starship': 'starship',
+    'Starship': 'starship',
 };
 
 const Features = ({ name, height, diameter, mass, payload_weights: payloadWeight, description }) => {
@@ -47,7 +47,7 @@ const Features = ({ name, height, diameter, mass, payload_weights: payloadWeight
 				</table>
 				<RelaxWrapper speed={14}>
 				<img
-					src={`./img/${rocketImage[name]}.png`}
+					src={`../img/${rocketImage[name]}.png`}
 					alt="rocket"
 					className="rocket"
 				/>
