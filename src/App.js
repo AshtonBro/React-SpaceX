@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Calendar, Details, Features, Footer, Header, Main, Home } from './components';
+import { Calendar, Details, Features, Footer, Header, Home } from './components';
 import FetchData from './service/FetchData';
 import './style.css';
 
 //? npm i react-router-dom -D
-//? mpm i react-rellax-wrapper --save
+//? npm i react-rellax-wrapper --save
+//? npm i react-youtube -D
 
 class App extends React.Component {
 
@@ -52,18 +53,19 @@ class App extends React.Component {
       <BrowserRouter>
         <Header rockets={this.state.rockets} changeRocket={this.changeRocket}/>
 
-        <Route exact path='/'>
-          {this.state.company && <Home company={this.state.company}/>}
-        </Route>
+        <Route exact 
+        path='/' 
+        render={() => this.state.company && 
+        <Home company={this.state.company} />} />
 
-        <Route path='/rocket'>
-          <Main rocket={this.state.rocket}/>
-          {this.state.rocketFeatures && <Features {...this.state.rocketFeatures}/>}
-        </Route>
-
+        <Route 
+        path='/rocket/:rocket'
+        render={({match}) => this.state.rocketFeatures &&
+         <Features {...this.state.rocketFeatures} match={match} />} />
+   
         <Route path='/calendar' component={Calendar} />
 
-        <Route path='/details'  component={Details} />
+        <Route path='/details/:id'  component={Details} />
 
         {this.state.company && <Footer {...this.state.company}/>}
       </BrowserRouter>
