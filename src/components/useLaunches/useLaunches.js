@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import FetchData from '../../service/FetchData';
 
 const fetchData = new FetchData();
@@ -11,9 +11,10 @@ const useLaunches = () => {
 		fetchData.getLaunches()
 		.then((launches) => setData((state) => [...launches]))	
     }, []);
-    
 
-    return { data };
+    const getLaunch = (id) => data.find((item) => item.id === id);
+    
+    return { data, getLaunch };
 };
 
 export default useLaunches;
