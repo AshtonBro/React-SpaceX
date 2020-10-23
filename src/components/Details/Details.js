@@ -14,7 +14,6 @@ const Details = (props) => {
        setLaunch(getLaunch(props.match.params.id))
     }, [getLaunch]);
 
-    
     const history = useHistory();
     
     //? TODO: Прелоадер
