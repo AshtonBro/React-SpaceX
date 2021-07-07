@@ -4,10 +4,6 @@ import { Calendar, Details, Features, Footer, Header, Home } from './components'
 import FetchData from './service/FetchData';
 import './style.css';
 
-//? npm i react-router-dom -D
-//? npm i react-rellax-wrapper --save
-//? npm i react-youtube -D
-
 class App extends React.Component {
 
   fetchData = new FetchData();
